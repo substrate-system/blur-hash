@@ -21,6 +21,7 @@ This is the ["blur-up" image loading technique](https://css-tricks.com/the-blur-
   * [attributes](#attributes)
 - [CSS](#css)
   * [Import CSS](#import-css)
+  * [variables](#variables)
 - [use](#use)
   * [Bundler](#bundler)
   * [pre-built JS](#pre-built-js)
