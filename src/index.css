@@ -1,5 +1,6 @@
 blur-hash {
     overflow: hidden;
+    display: block;
 
     & canvas {
         opacity: 0.6;
@@ -8,15 +9,16 @@ blur-hash {
 
     & img {
         transition: opacity 0.6s;
+        object-fit: cover;
 
         &.blurry {
-            opacity: 0.6;
+            opacity: var(--blur-hash-opacity, 0.6);
             filter: blur(30px);
         }
 
         &.sharp {
             opacity: 1;
-            animation: sharpen 0.8s both;
+            animation: sharpen var(--blur-hash-time, 0.8s) both;
         }
     }
 }

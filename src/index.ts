@@ -13,16 +13,19 @@ export class BlurHash extends HTMLElement {
     constructor () {
         super()
         const srcset = this.getAttribute('srcset')
-        const placeholder = this.getAttribute('placeholder')
-        if (!placeholder) throw new Error('not placeholder')
+        const w = this.getAttribute('width')
+        const h = this.getAttribute('height')
+
+        this.style.width = '' + w
+        this.style.height = '' + h
 
         document.body.style.setProperty('--blur-hash-time',
-            this.getAttribute('time') || '0.6s')
+            this.getAttribute('time') || '0.8s')
 
         this.innerHTML = `<canvas
             class="blurry"
-            width=${this.getAttribute('width')}
-            height=${this.getAttribute('height')}
+            width=${w}
+            height=${h}
         ></canvas>
         <img class="blurry"
             ${srcset ? `srcset="${srcset}"` : ''}

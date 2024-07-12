@@ -59,9 +59,7 @@ The time for css transitions and animation. This is set as a CSS variable.
 The string created by the blurhash algorithm. See [node example](#create-the-string).
 
 #### width & height
-The dimensions of the image
-
-
+The dimensions for the image
 
 ## CSS
 
@@ -75,6 +73,15 @@ Or minified:
 ```js
 import '@substrate-system/blur-hash/css/min'
 ```
+
+### variables
+
+__CSS variables__
+
+* `--blur-hash-time` -- the transition time for animating blurry -> sharp,
+  default is `0.8s`
+* `--blur-hash-opactiy` -- the opacity to use for the placeholder image,
+  default is `0.6`
 
 ## use
 This calls the global function `customElements.define`. Just import, then use
