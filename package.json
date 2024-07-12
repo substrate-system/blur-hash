@@ -1,9 +1,11 @@
 {
   "name": "@nichoth/example-webcomponent",
-  "private": true,
   "type": "module",
   "version": "0.0.0",
   "main": "dist/index.js",
+  "bin": {
+    "blur": "dist/bin/index.js"
+  },
   "files": [
     "./dist/*"
   ],

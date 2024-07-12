@@ -1,4 +1,4 @@
-# package name here
+# blur hash
 ![tests](https://github.com/substrate-system/icons/actions/workflows/nodejs.yml/badge.svg)
 [![types](https://img.shields.io/npm/types/@substrate-system/icons?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
@@ -8,7 +8,10 @@
 
 This is the ["blur-up" image loading technique](https://css-tricks.com/the-blur-up-technique-for-loading-background-images/), with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components).
 
-[See a live demo](https://substrate-system.github.io/blur-hash/)
+[See a live demonstration](https://substrate-system.github.io/blur-hash/)
+
+> [!TIP]
+> Throttle the internet speed with the dev tools.
 
 ## install
 
@@ -43,14 +46,6 @@ Or minified:
 import '@substrate-system/blur-hash/css/min'
 ```
 
-### Customize CSS via some variables
-
-```css
-blur-hash {
-    --example: pink;
-}
-```
-
 ## use
 This calls the global function `customElements.define`. Just import, then use
 the tag in your HTML.
@@ -63,21 +58,55 @@ import '@substrate-system/blur-hash'
 ### HTML
 ```html
 <div>
-    <blur-hash placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj" src="...">
+    <blur-hash
+        time="0.6s"
+        placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
+        src="..."
+        width=100
+        height=100
+    >
     </blur-hash>
 </div>
 ```
 
-### pre-built JS
+### attributes
+Takes the following attributes
+
+#### time
+The time for css transitions and animation. This is set as a CSS variable.
+
+#### placeholder
+The string created by the blurhash algorithm. See [node example](#create-the-string).
+
+#### width & height
+The dimensions of the image
+
+## pre-built JS
 This package exposes minified JS files too. Copy them to a location that is
 accessible to your web server, then link to them in HTML.
 
-#### copy
+### copy
 ```sh
 cp ./node_modules/@substrate-system/blur-hash/dist/blur-hash.min.js ./public
 ```
 
-#### HTML
+### HTML
 ```html
 <script type="module" src="./blur-hash.min.js"></script>
+```
+
+## Create the string
+This package includes a CLI tool to create the placeholder string. After installing this as a dependency,
+
+```sh
+npx blur ./my-file.jpg
+```
+
+Will print a string to stdout that can be used as a placeholder attribute.
+
+### Print to system clipboard
+On mac os,
+
+```sh
+npx blur ./my-file.jpg | pbcopy
 ```
