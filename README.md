@@ -12,6 +12,23 @@ This is the ["blur-up" image loading technique](https://css-tricks.com/the-blur-
 > [!TIP]
 > Throttle the internet speed with the dev tools.
 
+<!-- toc -->
+
+- [install](#install)
+- [API](#api)
+  * [ESM](#esm)
+  * [Common JS](#common-js)
+- [CSS](#css)
+  * [Import CSS](#import-css)
+  * [attributes](#attributes)
+- [use](#use)
+  * [Bundler](#bundler)
+  * [pre-built JS](#pre-built-js)
+- [Create the string](#create-the-string)
+  * [Print to system clipboard](#print-to-system-clipboard)
+
+<!-- tocstop -->
+
 ## install
 
 ```sh
@@ -45,16 +62,31 @@ Or minified:
 import '@substrate-system/blur-hash/css/min'
 ```
 
+### attributes
+Takes the following attributes
+
+#### time
+The time for css transitions and animation. This is set as a CSS variable.
+
+#### placeholder
+The string created by the blurhash algorithm. See [node example](#create-the-string).
+
+#### width & height
+The dimensions of the image
+
+
 ## use
 This calls the global function `customElements.define`. Just import, then use
 the tag in your HTML.
 
-### JS
+### Bundler
+
+#### JS
 ```js
 import '@substrate-system/blur-hash'
 ```
 
-### HTML
+#### HTML
 ```html
 <div>
     <blur-hash
@@ -68,28 +100,16 @@ import '@substrate-system/blur-hash'
 </div>
 ```
 
-### attributes
-Takes the following attributes
-
-#### time
-The time for css transitions and animation. This is set as a CSS variable.
-
-#### placeholder
-The string created by the blurhash algorithm. See [node example](#create-the-string).
-
-#### width & height
-The dimensions of the image
-
-## pre-built JS
+### pre-built JS
 This package exposes minified JS files too. Copy them to a location that is
 accessible to your web server, then link to them in HTML.
 
-### copy
+#### copy
 ```sh
 cp ./node_modules/@substrate-system/blur-hash/dist/blur-hash.min.js ./public
 ```
 
-### HTML
+#### HTML
 ```html
 <script type="module" src="./blur-hash.min.js"></script>
 ```

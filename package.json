@@ -27,7 +27,7 @@
     "build-bin": "mkdir -p dist/bin && esbuild ./bin/index.ts > ./dist/bin/index.js",
     "start": "vite",
     "preversion": "npm run lint",
-    "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
+    "version": "markdown-toc --maxdepth 3 -i README.md && auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
   },
@@ -48,6 +48,7 @@
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "inkjet": "^3.0.0",
+    "markdown-toc": "^1.2.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-nesting": "^12.1.5",
