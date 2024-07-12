@@ -58,12 +58,10 @@ export class BlurHash extends HTMLElement {
 
         img.addEventListener('load', () => {
             debug('loaded')
-            canvas.style.display = 'none'
+            canvas.style.opacity = '0'
             img.classList.remove('blurry')
             img.classList.add('sharp')
         })
-
-        debug('the image', img)
     }
 }
 
