@@ -4,8 +4,10 @@ import '../src/index.js'
 
 test('example', async t => {
     document.body.innerHTML += `
-        <example-component class="test">
-        </example-component>
+        <blur-hash
+            class="test"
+        >
+        </blur-hash>
     `
 
     const el = await waitFor('example-component')

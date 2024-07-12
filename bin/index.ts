@@ -1,4 +1,5 @@
 import yargs from 'yargs'
+import inkjet from 'inkjet'
 import { hideBin } from 'yargs/helpers'
 import { encode } from 'blurhash'
 import fs from 'node:fs/promises'
@@ -11,11 +12,14 @@ export const encodeImageToBlurhash = async (
     width:number,
     height:number
 ):Promise<string> => {
-    console.log('the width and height', width, height)
     const data = await fs.readFile(filepath)
-    const arr = Uint8ClampedArray.from(data)
-    console.log('array length', arr.length)
-    return encode(arr, width, height, 4, 4)
+
+    return new Promise((resolve, reject) => {
+        inkjet.decode(data, function (err, decoded:{ data:Uint8ClampedArray }) {
+            if (err) return reject(err)
+            resolve(encode(decoded.data, width, height, 4, 4))
+        })
+    })
 }
 
 const pathToThisFile = resolve(fileURLToPath(import.meta.url))
