@@ -49,19 +49,6 @@ import '@substrate-system/blur-hash'
 require('@substrate-system/blur-hash')
 ```
 
-## CSS
-
-### Import CSS
-
-```js
-import '@substrate-system/blur-hash/css'
-```
-
-Or minified:
-```js
-import '@substrate-system/blur-hash/css/min'
-```
-
 ### attributes
 Takes the following attributes
 
@@ -74,6 +61,20 @@ The string created by the blurhash algorithm. See [node example](#create-the-str
 #### width & height
 The dimensions of the image
 
+
+
+## CSS
+
+### Import CSS
+
+```js
+import '@substrate-system/blur-hash/css'
+```
+
+Or minified:
+```js
+import '@substrate-system/blur-hash/css/min'
+```
 
 ## use
 This calls the global function `customElements.define`. Just import, then use
