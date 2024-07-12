@@ -5,11 +5,9 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const execPath = [__dirname, '..', 'dist', 'bin', 'index.js']
-
 test('cli script', async t => {
     const child = fork(
-        path.join(...execPath),
+        path.join(__dirname, '..', 'dist', 'bin', 'index.js'),
         [path.join(__dirname, '..', 'example', '100.jpg')],
         { stdio: 'pipe' }
     )
