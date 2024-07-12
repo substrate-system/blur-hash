@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "listFiles": true,
-    "module": "ES2022",
+    "module": "NodeNext",
     "target": "ES2022",
-    "moduleResolution": "Bundler",
-    "esModuleInterop": false,
-    "lib": ["ES2022", "DOM", "WebWorker"],
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "lib": ["ES2021"],
     "allowJs": false,
     "skipLibCheck": true,
     "outDir": "dist",
@@ -15,7 +15,6 @@
     "strict": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
     "isolatedModules": true,
     "noImplicitAny": false,
     "declaration": true,
@@ -23,8 +22,7 @@
     "declarationMap": true
   },
   "include": [
-    "example",
-    "src/**/*",
+    "src",
     "test",
     "lib.es5.d.ts"
   ]

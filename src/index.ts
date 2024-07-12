@@ -1,25 +1,20 @@
+import { decode } from 'blurhash'
 import { createDebug } from '@bicycle-codes/debug'
 const debug = createDebug()
 
 // for docuement.querySelector
 declare global {
     interface HTMLElementTagNameMap {
-        'example-element': Example
+        'blur-hash': BlurHash
     }
 }
 
-export class Example extends HTMLElement {
+export class BlurHash extends HTMLElement {
     constructor () {
         super()
 
-        this.innerHTML = `<div>
-            <p>example</p>
-            <ul>
-                ${Array.from(this.children).filter(Boolean).map(node => {
-                    return `<li>${node.outerHTML}</li>`
-                }).join('')}
-            </ul>
-        </div>`
+        this.innerHTML = `<canvas>
+        </canvas>`
     }
 
     // Define the attributes to observe
@@ -33,7 +28,7 @@ export class Example extends HTMLElement {
      * @param  {string} newValue The new attribute value
      */
     handleChange_example (oldValue:string, newValue:string) {
-        debug('handling example change', oldValue, newValue)
+        debug('handling change', oldValue, newValue)
 
         if (newValue === null) {
             // [example] was removed
@@ -59,17 +54,19 @@ export class Example extends HTMLElement {
 
     connectedCallback () {
         debug('connected')
+        const width = parseInt(this.getAttribute('width') ?? '')
+        const height = parseInt(this.getAttribute('height') ?? '')
+        const placeholder = this.getAttribute('placeholder')
+        if (!placeholder || !width || !height) {
+            throw new Error('Missing attributes')
+        }
 
-        const observer = new MutationObserver(function (mutations) {
-            mutations.forEach((mutation) => {
-                if (mutation.addedNodes.length) {
-                    debug('Node added: ', mutation.addedNodes)
-                }
-            })
-        })
-
-        observer.observe(this, { childList: true })
+        const pixels = decode(placeholder, width, height)
+        const ctx = (this.querySelector('canvas') as HTMLCanvasElement)
+            .getContext('2d')
+        const imageData = ctx!.createImageData(width, height)
+        imageData.data.set(pixels)
     }
 }
 
-customElements.define('example-component', Example)
+customElements.define('blur-hash', BlurHash)
