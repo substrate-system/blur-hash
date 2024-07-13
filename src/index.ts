@@ -10,17 +10,21 @@ declare global {
 }
 
 export class BlurHash extends HTMLElement {
+    time:number
+
     constructor () {
         super()
         const srcset = this.getAttribute('srcset')
         const w = this.getAttribute('width')
         const h = this.getAttribute('height')
+        const time = this.getAttribute('time')
+        this.time = time ? parseInt(time) : 800
 
         this.style.width = '' + w
         this.style.height = '' + h
 
         document.body.style.setProperty('--blur-hash-time',
-            this.getAttribute('time') || '0.8s')
+            time ? '.' + (parseInt(time) / 1000 + 's') : '0.8s')
 
         this.innerHTML = `<canvas
             class="blurry"
@@ -46,6 +50,7 @@ export class BlurHash extends HTMLElement {
         if (!placeholder || !width || !height) {
             throw new Error('Missing attributes')
         }
+        debug('connected')
 
         const pixels = decode(placeholder, width, height)
         const canvas = this.querySelector('canvas') as HTMLCanvasElement
@@ -57,13 +62,10 @@ export class BlurHash extends HTMLElement {
         const img = this.querySelector('img')!
 
         img.addEventListener('load', () => {
-            debug('loaded')
             canvas.style.display = 'none'
             img.classList.remove('blurry')
             img.classList.add('sharp')
         })
-
-        debug('the image', img)
     }
 }
 
