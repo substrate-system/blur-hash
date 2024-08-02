@@ -1,6 +1,4 @@
 import { decode } from 'blurhash'
-import { createDebug } from '@bicycle-codes/debug'
-const debug = createDebug()
 
 // for docuement.querySelector
 declare global {
@@ -50,7 +48,6 @@ export class BlurHash extends HTMLElement {
         if (!placeholder || !width || !height) {
             throw new Error('Missing attributes')
         }
-        debug('connected')
 
         const pixels = decode(placeholder, width, height)
         const canvas = this.querySelector('canvas') as HTMLCanvasElement
