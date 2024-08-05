@@ -51,7 +51,7 @@
     "markdown-toc": "^1.2.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
-    "postcss-nesting": "^12.1.5",
+    "postcss-nesting": "^13.0.0",
     "tap-spec": "^5.0.0",
     "tape-run": "^11.0.0",
     "typedoc": "^0.26.2",
