@@ -1,7 +1,7 @@
-import { fork } from 'child_process'
-import { test } from '@bicycle-codes/tapzero'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import { test } from '@substrate-system/tapzero'
+import { fork } from 'node:child_process'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 

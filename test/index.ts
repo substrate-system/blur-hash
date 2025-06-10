@@ -1,11 +1,12 @@
-import { test } from '@bicycle-codes/tapzero'
-import { waitFor } from '@bicycle-codes/dom'
+import { test } from '@substrate-system/tapzero'
+import { waitFor } from '@substrate-system/dom'
 import '../src/index.js'
 
 test('example', async t => {
     document.body.innerHTML += `
         <blur-hash
             class="test"
+            alt="test image"
             width=30
             height=30
             src="/100.jpg"

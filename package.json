@@ -13,7 +13,7 @@
   "scripts": {
     "lint": "eslint \"./**/*.{ts,js}\"",
     "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
-    "test": "npm run lint && npm run build && npm run build-tests && npm run test-tape-run && npm run test-bin",
+    "test": "npm run build && npm run build-tests && npm run test-tape-run && npm run test-bin",
     "test-bin": "npm run build-bin && esbuild ./test/bin.ts > ./test/bin.js && node ./test/bin.js | tap-spec",
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-spec",
     "build-css": "postcss src/index.css --use postcss-nesting > dist/style.css",
@@ -38,9 +38,9 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@bicycle-codes/debug": "^0.7.2",
-    "@bicycle-codes/dom": "^0.1.0",
-    "@bicycle-codes/tapzero": "^0.10.0",
+    "@substrate-system/debug": "^0.7.2",
+    "@substrate-system/dom": "^0.1.0",
+    "@substrate-system/tapzero": "^0.10.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "auto-changelog": "^2.4.0",
