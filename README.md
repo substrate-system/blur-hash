@@ -15,10 +15,12 @@ This is the ["blur-up" image loading technique](https://css-tricks.com/the-blur-
 <!-- toc -->
 
 - [install](#install)
-- [API](#api)
+- [Modules](#modules)
   * [ESM](#esm)
   * [Common JS](#common-js)
+- [API](#api)
   * [attributes](#attributes)
+  * [`.reset`](#reset)
 - [CSS](#css)
   * [Import CSS](#import-css)
   * [variables](#variables)
