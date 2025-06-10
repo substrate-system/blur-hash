@@ -25,7 +25,7 @@ document.body.innerHTML += `
     </div>
 `
 
-const btn = qs('button')?.addEventListener('click', ev => {
+qs('button')?.addEventListener('click', ev => {
     ev.preventDefault()
     qs('blur-hash')?.reset(
         llamas,
