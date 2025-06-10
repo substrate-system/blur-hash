@@ -1,8 +1,8 @@
 {
   "name": "@substrate-system/blur-hash",
   "version": "0.0.3",
-  "description": "A blurry placeholder image web component",
   "type": "module",
+  "description": "A blurry placeholder image web component",
   "main": "dist/index.js",
   "bin": {
     "blur": "dist/bin/index.js"
@@ -76,7 +76,7 @@
     }
   },
   "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "types": "./dist/index.d.ts",
   "directories": {
     "example": "example",
@@ -96,5 +96,5 @@
   "bugs": {
     "url": "https://github.com/substrate-system/blur-hash/issues"
   },
-  "homepage": "https://github.com/substrate-system/blur-hash#readme"
+  "homepage": "https://github.com/substrate-system/blur-hash"
 }
