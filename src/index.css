@@ -4,7 +4,7 @@ blur-hash {
 
     & canvas {
         transition: opacity var(--blur-hash-time, 0.8s);
-        opacity: var(--blur-hash-opacity, 0.2);
+        opacity: var(--blur-hash-opacity, 0.4);
     }
 
     & img {
@@ -12,7 +12,7 @@ blur-hash {
         object-fit: cover;
 
         &.blurry {
-            opacity: var(--blur-hash-opacity, 0.2);
+            opacity: var(--blur-hash-opacity, 0.4);
             filter: blur(30px);
         }
 
