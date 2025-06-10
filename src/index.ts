@@ -41,7 +41,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
             height:string|null;
             time:number|null;
         }> = {}
-    ) {
+    ):void {
         if (attrs.width) this.style.width = attrs.width
         if (attrs.height) this.style.height = attrs.height
 
@@ -71,6 +71,9 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         this.setAttribute('placeholder', placeholder)
 
         const img = this.querySelector('img')!
+        if (newSrcset) img.setAttribute('srcset', newSrcset)
+        if (newSizes) img.setAttribute('sizes', newSizes)
+
         img.addEventListener('load', () => {
             canvas.style.display = 'none'
             img.classList.remove('blurry')

@@ -36,7 +36,7 @@ This is the ["blur-up" image loading technique](https://css-tricks.com/the-blur-
 npm i -S @substrate-system/blur-hash
 ```
 
-## API
+## Modules
 
 This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports).
 
@@ -50,6 +50,8 @@ import '@substrate-system/blur-hash'
 require('@substrate-system/blur-hash')
 ```
 
+## API
+
 ### attributes
 Takes the following attributes
 
@@ -61,6 +63,39 @@ The string created by the blurhash algorithm. See [node example](#create-the-str
 
 #### width & height
 The dimensions for the image
+
+### `.reset`
+
+Change the image, and do the blur-up thing again.
+
+```ts
+reset (
+    newSrc:string,
+    alt:string,
+    placeholder:string,
+    newSrcset?:string|null,
+    newSizes?:string|null,
+    attrs:Partial<{
+        srcset:string|null;
+        width:string|null;
+        height:string|null;
+        time:number|null;
+    }> = {}
+):void
+```
+
+#### example
+
+```js
+document.querySelector('blur-hash')?.reset(
+    'llamas.jpg',
+    'some llamas',
+    'UgI}q#%O%eNa?^I?awaf?aIVs*WBxZxaRjR*'
+)
+```
+
+-------------------------------------------------
+
 
 ## CSS
 
