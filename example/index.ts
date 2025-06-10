@@ -12,6 +12,7 @@ document.body.innerHTML += `
         width="400px"
         height="400px"
         placeholder="UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV"
+        alt="demo image"
         src=${imgUrl}
     ></blur-hash>
 `

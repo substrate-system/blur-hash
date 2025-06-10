@@ -5,7 +5,7 @@ import { encode } from 'blurhash'
 import fs from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import sizeOf from 'image-size'
+import { imageSizeFromFile } from 'image-size/fromFile'
 
 export const encodeImageToBlurhash = async (
     filepath:string,
@@ -36,7 +36,7 @@ if (isThisFileBeingRunViaCLI) {
         .argv
 
     const filename = args._[0]
-    const { width, height } = sizeOf(filename)
+    const { width, height } = await imageSizeFromFile(filename)
     const hash = await encodeImageToBlurhash(filename, width!, height!)
     process.stdout.write(hash + '\n')
 }

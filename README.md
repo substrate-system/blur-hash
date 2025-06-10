@@ -82,7 +82,7 @@ __CSS variables__
 * `--blur-hash-time` -- the transition time for animating blurry -> sharp,
   default is `0.8s`
 * `--blur-hash-opactiy` -- the opacity to use for the placeholder image,
-  default is `0.6`
+  default is `0.2`
 
 ## use
 This calls the global function `customElements.define`. Just import, then use

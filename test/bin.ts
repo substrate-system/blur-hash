@@ -6,6 +6,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 test('cli script', async t => {
+    t.plan(1)
+
     const child = fork(
         path.join(__dirname, '..', 'dist', 'bin', 'index.js'),
         [path.join(__dirname, '..', 'example', '100.jpg')],
@@ -13,7 +15,6 @@ test('cli script', async t => {
     )
 
     return new Promise((resolve) => {
-        t.plan(1)
         child.stdout?.on('data', data => {
             t.equal('' + data, 'UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV\n',
                 'should get the expected string from the example image')
