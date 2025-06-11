@@ -7,12 +7,14 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { imageSizeFromFile } from 'image-size/fromFile'
 
-export const encodeImageToBlurhash = async (
+/**
+ * Create a string for blur-hash.
+ */
+export const createString = async (
     filepath:string,
-    width:number,
-    height:number
 ):Promise<string> => {
     const data = await fs.readFile(filepath)
+    const { width, height } = await imageSizeFromFile(filepath)
 
     return new Promise((resolve, reject) => {
         inkjet.decode(data, function (err, decoded:{ data:Uint8ClampedArray }) {
@@ -36,7 +38,6 @@ if (isThisFileBeingRunViaCLI) {
         .argv
 
     const filename = args._[0]
-    const { width, height } = await imageSizeFromFile(filename)
-    const hash = await encodeImageToBlurhash(filename, width!, height!)
+    const hash = await createString(filename)
     process.stdout.write(hash + '\n')
 }

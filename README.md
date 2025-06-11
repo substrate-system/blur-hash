@@ -166,7 +166,18 @@ cp ./node_modules/@substrate-system/blur-hash/dist/blur-hash.min.js ./public
 ```
 
 ## Create the string
-This package includes a CLI tool to create the placeholder string. After installing this as a dependency,
+
+### JS API
+
+```js
+import { createString } from '@substrate-system/blur-hash'
+
+
+```
+
+### CLI
+This package includes a CLI tool to create the placeholder string. After
+installing this as a dependency,
 
 ```sh
 npx blur ./my-file.jpg
@@ -174,7 +185,7 @@ npx blur ./my-file.jpg
 
 Will print a string to stdout that can be used as a placeholder attribute.
 
-### Print to system clipboard
+#### Print to system clipboard
 On mac os,
 
 ```sh
