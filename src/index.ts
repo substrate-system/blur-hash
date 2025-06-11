@@ -1,5 +1,7 @@
 import { WebComponent } from '@substrate-system/web-component'
 import { decode } from 'blurhash'
+// import Debug from '@substrate-system/debug'
+// const debug = Debug
 
 // for docuement.querySelector
 declare global {
@@ -8,12 +10,25 @@ declare global {
     }
 }
 
+export type ImgAttrs = {
+    alt:string;
+    width:string|number;
+    height:string|number;
+    placeholder:string;
+    src:string;
+    srcset?:string|null;
+    sizes?:string|null;
+    time?:number;
+    contentVisibility?:'visible'|'auto'|'hidden'|null;
+    decoding?:'sync'|'async'|'auto'|null;
+    loading?:'lazy'|'eager'|'auto'|null;
+}
+
 export class BlurHash extends WebComponent.create('blur-hash') {
     time:number
 
     constructor () {
         super()
-        // const srcset = this.getAttribute('srcset')
         const w = this.getAttribute('width')
         const h = this.getAttribute('height')
         const time = this.getAttribute('time')
@@ -28,36 +43,25 @@ export class BlurHash extends WebComponent.create('blur-hash') {
 
     /**
      * Change the image, and do the blur-up thing again.
+     * Will use the existing width & height if they are not passed in.
      */
-    reset (
-        newSrc:string,
-        alt:string,
-        placeholder:string,
-        attrs:Partial<{
-            srcset:string|null;
-            sizes?:string|null,
-            width:string|null;
-            height:string|null;
-            time:number|null;
-        }> = {}
-    ):void {
-        if (attrs.width) this.style.width = attrs.width
-        if (attrs.height) this.style.height = attrs.height
+    reset (attrs:(Omit<Omit<ImgAttrs, 'width'>, 'height'> & {
+        width?:string|number;
+        height?:string|number;
+    })):void {
+        if (attrs.width) this.style.width = '' + attrs.width
+        if (attrs.height) this.style.height = '' + attrs.height
 
         const width = (attrs.width ?
-            parseInt(attrs.width) :
+            (typeof attrs.width === 'string' ? parseInt(attrs.width) : attrs.width) :
             parseInt(this.style.width))
         const height = (attrs.height ?
-            parseInt(attrs.height) :
+            (typeof attrs.height === 'string' ? parseInt(attrs.height) : attrs.height) :
             parseInt(this.style.height))
 
-        this.innerHTML = BlurHash.html({
-            srcset: attrs.srcset,
-            w: '' + width,
-            h: '' + height,
-            src: newSrc,
-            alt
-        })
+        this.innerHTML = BlurHash.html(Object.assign(attrs, { width, height }))
+
+        const { placeholder, src: newSrc } = attrs
 
         const pixels = decode(placeholder, width, height)
         const canvas = this.querySelector('canvas') as HTMLCanvasElement
@@ -88,7 +92,11 @@ export class BlurHash extends WebComponent.create('blur-hash') {
             throw new Error('Missing attributes')
         }
 
-        this.innerHTML = this.render()
+        // don't render again if we dont have to
+        if (!this.innerHTML) {
+            this.innerHTML = this.render()
+        }
+
         const pixels = decode(placeholder, width, height)
         const canvas = this.querySelector('canvas') as HTMLCanvasElement
         const ctx = canvas.getContext('2d')!
@@ -97,7 +105,6 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         ctx.putImageData(imageData, 0, 0)
 
         const img = this.querySelector('img')!
-
         img.addEventListener('load', () => {
             canvas.style.display = 'none'
             img.classList.remove('blurry')
@@ -105,58 +112,54 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         })
     }
 
-    static html (attrs:{
-        alt:string;
-        srcset?:string|null;
-        w?:string|null;
-        h?:string|null;
-        time?:number;
-        contentVisibility?:'visible'|'auto'|'hidden'|null;
-        decoding?:'sync'|'async'|'auto'|null;
-        loading?:'lazy'|'eager'|'auto'|null;
-        src:string;
-    }) {
+    static html (attrs:ImgAttrs) {
         const {
-            srcset,
-            w,
-            h,
+            width,
+            height,
             alt,
             contentVisibility,
             decoding,
             loading,
+            srcset,
+            sizes,
             src
         } = attrs
 
         return `<canvas
             class="blurry"
-            width=${w}
-            height=${h}
+            width=${width}
+            height=${height}
         ></canvas>
 
         <img class="blurry"
-            ${srcset ? `srcset="${srcset}"` : ''}
             alt="${alt}"
             content-visibility="${contentVisibility || 'auto'}"
             decoding="${decoding || 'async'}"
             loading="${loading || 'lazy'}"
             class="image-element blurry"
+            ${srcset ? `srcset="${srcset}"` : ''}
+            ${sizes ? `sizes=${sizes}` : ''}
             src="${src}"
         />`
     }
 
+    /**
+     * Use the attributes to create HTML.
+     */
     render ():string {
         const srcset = this.getAttribute('srcset')
-        const w = this.getAttribute('width')
-        const h = this.getAttribute('height')
+        const width = this.getAttribute('width')
+        const height = this.getAttribute('height')
         const time = this.getAttribute('time')
+        const placeholder = this.getAttribute('placeholder')
         this.time = time ? parseInt(time) : 800
         const src = this.getAttribute('src')
         const alt = this.getAttribute('alt')
+        if (!placeholder) throw new Error('not placeholder')
+        if (!width || !height) throw new Error('not width or not height')
         if (!src) throw new Error('Not src')
         if (!alt) throw new Error('Not alt')
 
-        return BlurHash.html({ srcset, w, h, src, alt })
+        return BlurHash.html({ srcset, width, height, src, alt, placeholder })
     }
 }
-
-customElements.define('blur-hash', BlurHash)

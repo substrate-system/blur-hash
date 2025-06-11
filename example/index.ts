@@ -2,9 +2,11 @@
 import { qs } from '@substrate-system/dom'
 import imgUrl from './100.jpg'
 import llamas from './llamas.jpg'
+import { BlurHash } from '../src/index.js'
 import '../src/index.css'
-import '../src/index.js'
 import './example.css'
+
+BlurHash.define()
 
 // the string from CLI for the 100 cat
 // UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV
@@ -14,7 +16,7 @@ document.body.innerHTML += `
         width="400px"
         height="400px"
         placeholder="UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV"
-        alt="demo image"
+        alt="cool cat"
         src=${imgUrl}
     ></blur-hash>
 
@@ -27,9 +29,9 @@ document.body.innerHTML += `
 
 qs('button')?.addEventListener('click', ev => {
     ev.preventDefault()
-    qs('blur-hash')?.reset(
-        llamas,
-        'some llamas',
-        'UgI}q#%O%eNa?^I?awaf?aIVs*WBxZxaRjR*'
-    )
+    qs('blur-hash')?.reset({
+        src: llamas,
+        alt: 'some llamas',
+        placeholder: 'UgI}q#%O%eNa?^I?awaf?aIVs*WBxZxaRjR*'
+    })
 })

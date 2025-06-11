@@ -1,6 +1,8 @@
 import { test } from '@substrate-system/tapzero'
 import { waitFor } from '@substrate-system/dom'
-import '../src/index.js'
+import { BlurHash } from '../src/index.js'
+
+BlurHash.define()
 
 test('example', async t => {
     document.body.innerHTML += `

@@ -10,6 +10,23 @@
   "files": [
     "./dist/*"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./hash": "./dist/bin/index.js",
+    "./*": {
+      "import": [
+        "./dist/*.js",
+        "./dist/*"
+      ],
+      "require": [
+        "./dist/*.cjs",
+        "./dist/*"
+      ]
+    }
+  },
   "scripts": {
     "lint": "eslint \"./**/*.{ts,js}\"",
     "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
@@ -59,23 +76,6 @@
     "typedoc": "^0.28.1",
     "typescript": "^5.4.5",
     "vite": "^6.0.1"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./hash": "./dist/bin/index.js",
-    "./*": {
-      "import": [
-        "./dist/*.js",
-        "./dist/*"
-      ],
-      "require": [
-        "./dist/*.cjs",
-        "./dist/*"
-      ]
-    }
   },
   "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
   "license": "SEE LICENSE IN LICENSE",

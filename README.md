@@ -37,7 +37,7 @@ with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https:/
 
 <!-- tocstop -->
 
-## install
+## Install
 
 ```sh
 npm i -S @substrate-system/blur-hash
@@ -49,7 +49,7 @@ This exposes ESM and common JS via [package.json `exports` field](https://nodejs
 
 ### ESM
 ```js
-import '@substrate-system/blur-hash'
+import { BlurHash } from '@substrate-system/blur-hash'
 ```
 
 ### Common JS
@@ -75,30 +75,40 @@ The dimensions for the image
 
 Change the image, and do the blur-up thing again.
 
+Takes a new `src` string, new placeholder string, and all other attributes.
+
 ```ts
-reset (
-    newSrc:string,
-    alt:string,
-    placeholder:string,
-    newSrcset?:string|null,
-    newSizes?:string|null,
-    attrs:Partial<{
-        srcset:string|null;
-        width:string|null;
-        height:string|null;
-        time:number|null;
-    }> = {}
-):void
+reset (attributes:{
+  alt:string;
+  width:string;
+  height:string;
+  placeholder:string;
+  src:string;
+  srcset?:string|null;
+  sizes?:string|null;
+  time?:number;
+  contentVisibility?:'visible'|'auto'|'hidden'|null;
+  decoding?:'sync'|'async'|'auto'|null;
+  loading?:'lazy'|'eager'|'auto'|null;
+}):void
 ```
 
-#### example
+#### `.reset` example
+
+The `reset` method will be on the element once you call `define`.
 
 ```js
-document.querySelector('blur-hash')?.reset(
-    'llamas.jpg',
-    'some llamas',
-    'UgI}q#%O%eNa?^I?awaf?aIVs*WBxZxaRjR*'
-)
+import { BlurHash } from '@substrate-system/blur-hash'
+
+BlurHash.define()
+
+const el = document.querySelector('blur-hash')
+
+el?.reset({
+  src: 'llamas.jpg',
+  alt: 'some llamas',
+  placeholder: 'UgI}q#%O%eNa?^I?awaf?aIVs*WBxZxaRjR*'
+})
 ```
 
 -------------------------------------------------
@@ -127,17 +137,22 @@ __CSS variables__
   default is `0.2`
 
 ## use
-This calls the global function `customElements.define`. Just import, then use
-the tag in your HTML.
+
+You will need to call the static method `.define` in JS to use the element.
 
 ### Bundler
 
 #### JS
 ```js
-import '@substrate-system/blur-hash'
+import { BlurHash } from '@substrate-system/blur-hash'
+
+BlurHash.define()
 ```
 
 #### HTML
+
+Use the tag in HTML.
+
 ```html
 <div>
     <blur-hash
@@ -170,9 +185,10 @@ cp ./node_modules/@substrate-system/blur-hash/dist/blur-hash.min.js ./public
 ### JS API
 
 ```js
-import { createString } from '@substrate-system/blur-hash'
+import { createString } from '@substrate-system/blur-hash/hash'
 
-
+const hash = await createString('../example/100.jpg')
+// => 'UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV'
 ```
 
 ### CLI
