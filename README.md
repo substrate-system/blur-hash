@@ -92,7 +92,7 @@ Use the tag in HTML.
 </div>
 ```
 
-## use
+## Use
 Call the static method `.define` in JS, then use the tag in HTML.
 
 ```js
@@ -109,6 +109,22 @@ BlurHash.define()
   height=100
   src="..."
 ></blur-hash>
+```
+
+### Server-side rendering
+Following convention, this module exposes an `html` function at `/ssr`. It
+returns a plain string of appropriate markup in Node.
+
+```js
+import { html } from '@substrate-system/blur-hash/ssr'
+
+const htmlString = html({
+    alt: 'hello',
+    width: 30,
+    height: 30,
+    placeholder: 'UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV',
+    src: 'abc.jpg'
+})
 ```
 
 ## API
