@@ -15,6 +15,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./ssr": {
+      "import": "./dist/ssr.js",
+      "require": "./dist/ssr.cjs"
+    },
     "./hash": "./dist/bin/index.js",
     "./*": {
       "import": [
@@ -30,9 +34,10 @@
   "scripts": {
     "lint": "eslint \"./**/*.ts\"",
     "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
-    "test": "npm run build && npm run build-tests && npm run test-tape-run && npm run test-bin && npm run test-api",
+    "test": "npm run build && npm run build-tests && npm run test-tape-run && npm run test-bin && npm run test-api && npm run test-ssr",
     "test-bin": "npm run build-bin && esbuild ./test/bin.ts > ./test/bin.js && node ./test/bin.js | tap-spec",
     "test-api": "esbuild ./test/api.ts --format=esm --platform=node > test/api.js && esbuild ./bin/index.ts --platform=node > bin/index.js && node ./test/api.js | tap-spec",
+    "test-ssr": "esbuild ./test/ssr.ts --bundle --platform=node | node --input-type=module | tap-spec",
     "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-spec",
     "build-css": "postcss src/index.css --use postcss-nesting > dist/style.css",
     "build-css:min": "postcss src/index.css --use cssnano postcss-nesting > dist/style.min.css",

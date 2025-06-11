@@ -1,7 +1,6 @@
 import { WebComponent } from '@substrate-system/web-component'
 import { decode } from 'blurhash'
-// import Debug from '@substrate-system/debug'
-// const debug = Debug
+import { html } from './ssr.js'
 
 // for docuement.querySelector
 declare global {
@@ -113,34 +112,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
     }
 
     static html (attrs:ImgAttrs) {
-        const {
-            width,
-            height,
-            alt,
-            contentVisibility,
-            decoding,
-            loading,
-            srcset,
-            sizes,
-            src
-        } = attrs
-
-        return `<canvas
-            class="blurry"
-            width=${width}
-            height=${height}
-        ></canvas>
-
-        <img class="blurry"
-            alt="${alt}"
-            content-visibility="${contentVisibility || 'auto'}"
-            decoding="${decoding || 'async'}"
-            loading="${loading || 'lazy'}"
-            class="image-element blurry"
-            ${srcset ? `srcset="${srcset}"` : ''}
-            ${sizes ? `sizes=${sizes}` : ''}
-            src="${src}"
-        />`
+        return html(attrs)
     }
 
     /**

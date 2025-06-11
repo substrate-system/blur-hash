@@ -4,7 +4,7 @@ import { BlurHash } from '../src/index.js'
 
 BlurHash.define()
 
-test('example', async t => {
+test('BlurHash as HTML element', async t => {
     document.body.innerHTML += `
         <blur-hash
             class="test"
