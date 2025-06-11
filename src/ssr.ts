@@ -13,7 +13,7 @@ export function html (attrs:ImgAttrs) {
         src
     } = attrs
 
-    return `<canvas
+    const htmlString = `<canvas
         class="blurry"
         width=${width}
         height=${height}
@@ -29,4 +29,9 @@ export function html (attrs:ImgAttrs) {
         ${sizes ? `sizes=${sizes}` : ''}
         src="${src}"
     />`
+
+    // running in node?
+    return typeof window === 'undefined' ?
+        `<blur-hash>${htmlString}</blur-hash>` :
+        htmlString
 }

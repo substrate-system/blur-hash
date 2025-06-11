@@ -10,6 +10,7 @@ test('server-side render', t => {
         src: 'abc.jpg'
     })
 
+    t.ok(htmlString.includes('<blur-hash'), 'should include the custom element')
     t.ok(htmlString.includes('<canvas'), 'should include a canvas element')
     t.ok(htmlString.includes('<img class="blurry'),
         'should include an img with blurry class')
