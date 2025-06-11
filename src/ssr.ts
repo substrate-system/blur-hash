@@ -1,17 +1,20 @@
 import type { ImgAttrs } from './index.js'
 
-export function html (attrs:ImgAttrs) {
+export function html (attrs:ImgAttrs & { classes?:string }) {
     const {
         width,
         height,
         alt,
         contentVisibility,
+        placeholder,
         decoding,
         loading,
         srcset,
         sizes,
         src
     } = attrs
+
+    if (!placeholder) throw new Error('not placeholder')
 
     const htmlString = `<canvas
         class="blurry"
@@ -24,7 +27,6 @@ export function html (attrs:ImgAttrs) {
         content-visibility="${contentVisibility || 'auto'}"
         decoding="${decoding || 'async'}"
         loading="${loading || 'lazy'}"
-        class="image-element blurry"
         ${srcset ? `srcset="${srcset}"` : ''}
         ${sizes ? `sizes=${sizes}` : ''}
         src="${src}"
@@ -32,6 +34,12 @@ export function html (attrs:ImgAttrs) {
 
     // running in node?
     return typeof window === 'undefined' ?
-        `<blur-hash>${htmlString}</blur-hash>` :
+        `<blur-hash
+            ${attrs.classes ? `class="${attrs.classes}"` : ''}
+            alt="${alt}"
+            placeholder="${placeholder}"
+        >
+            ${htmlString}
+        </blur-hash>` :
         htmlString
 }

@@ -111,7 +111,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         })
     }
 
-    static html (attrs:ImgAttrs) {
+    static html (attrs:ImgAttrs & { classes?:string }) {
         return html(attrs)
     }
 
@@ -123,6 +123,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         const width = this.getAttribute('width')
         const height = this.getAttribute('height')
         const time = this.getAttribute('time')
+        const classes = this.classList.toString()
         const placeholder = this.getAttribute('placeholder')
         this.time = time ? parseInt(time) : 800
         const src = this.getAttribute('src')
@@ -132,6 +133,6 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         if (!src) throw new Error('Not src')
         if (!alt) throw new Error('Not alt')
 
-        return BlurHash.html({ srcset, width, height, src, alt, placeholder })
+        return BlurHash.html({ classes, srcset, width, height, src, alt, placeholder })
     }
 }
