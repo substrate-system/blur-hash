@@ -60,23 +60,46 @@ require('@substrate-system/blur-hash')
 
 ## API
 
-### attributes
-Takes the following attributes
+### Attributes
+
+The required attributes are `alt`, `src`, `placeholder`, `width`, and `height`.
+
+```ts
+type Attrs = {
+  alt:string;
+  width:string|number;
+  height:string|number;
+  placeholder:string;
+  src:string;
+  srcset?:string|null;
+  sizes?:string|null;
+  time?:number;
+  contentVisibility?:'visible'|'auto'|'hidden'|null;
+  decoding?:'sync'|'async'|'auto'|null;
+  loading?:'lazy'|'eager'|'auto'|null;
+}
+```
+
+--------------------------------------
+
+#### other attributes
 
 #### time
 The time for css transitions and animation. This is set as a CSS variable.
 
-#### placeholder
-The string created by the blurhash algorithm. See [node example](#create-the-string).
-
 #### width & height
 The dimensions for the image
+
+----------------------------------------------
 
 ### `.reset`
 
 Change the image, and do the blur-up thing again.
 
 Takes a new `src` string, new placeholder string, and all other attributes.
+
+If `width` and `height` are not passed in, it will keep the existing width
+and height.
 
 ```ts
 reset (attributes:{
@@ -173,7 +196,7 @@ accessible to your web server, then link to them in HTML.
 
 #### copy
 ```sh
-cp ./node_modules/@substrate-system/blur-hash/dist/blur-hash.min.js ./public
+cp ./node_modules/@substrate-system/blur-hash/dist/index.min.js ./public/blur-hash.min.js
 ```
 
 #### HTML
@@ -182,6 +205,9 @@ cp ./node_modules/@substrate-system/blur-hash/dist/blur-hash.min.js ./public
 ```
 
 ## Create the string
+
+Use Node to create the `placeholder` attribute, the string consumed
+by blur-hash.
 
 ### JS API
 
@@ -193,6 +219,7 @@ const hash = await createString('../example/100.jpg')
 ```
 
 ### CLI
+
 This package includes a CLI tool to create the placeholder string. After
 installing this as a dependency,
 
@@ -203,6 +230,7 @@ npx blur ./my-file.jpg
 Will print a string to stdout that can be used as a placeholder attribute.
 
 #### Print to system clipboard
+
 On mac os,
 
 ```sh
