@@ -19,7 +19,7 @@ with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https:/
 
 <!-- toc -->
 
-- [install](#install)
+- [Install](#install)
 - [Modules](#modules)
   * [ESM](#esm)
   * [Common JS](#common-js)
@@ -33,7 +33,8 @@ with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https:/
   * [Bundler](#bundler)
   * [pre-built JS](#pre-built-js)
 - [Create the string](#create-the-string)
-  * [Print to system clipboard](#print-to-system-clipboard)
+  * [JS API](#js-api)
+  * [CLI](#cli)
 
 <!-- tocstop -->
 
