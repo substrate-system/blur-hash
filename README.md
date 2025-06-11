@@ -80,11 +80,11 @@ Takes a new `src` string, new placeholder string, and all other attributes.
 
 ```ts
 reset (attributes:{
-  alt:string;
-  width:string;
-  height:string;
-  placeholder:string;
   src:string;
+  alt:string;
+  placeholder:string;
+  width?:string;
+  height?:string;
   srcset?:string|null;
   sizes?:string|null;
   time?:number;
