@@ -28,7 +28,7 @@
     }
   },
   "scripts": {
-    "lint": "eslint \"./**/*.{ts,js}\"",
+    "lint": "eslint \"./**/*.ts\"",
     "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
     "test": "npm run build && npm run build-tests && npm run test-tape-run && npm run test-bin && npm run test-api",
     "test-bin": "npm run build-bin && esbuild ./test/bin.ts > ./test/bin.js && node ./test/bin.js | tap-spec",
