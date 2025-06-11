@@ -53,9 +53,62 @@ This exposes ESM and common JS via [package.json `exports` field](https://nodejs
 import { BlurHash } from '@substrate-system/blur-hash'
 ```
 
-### Common JS
+### CJS
 ```js
-require('@substrate-system/blur-hash')
+const blurHash = require('@substrate-system/blur-hash')
+```
+
+### Bundler
+
+Just import like normal.
+
+### pre-built JS
+This package exposes minified JS files too. Copy them to a location that is
+accessible to your web server, then link to them in HTML.
+
+#### copy
+```sh
+cp ./node_modules/@substrate-system/blur-hash/dist/index.min.js ./public/blur-hash.min.js
+```
+
+#### HTML
+```html
+<script type="module" src="./blur-hash.min.js"></script>
+```
+
+Use the tag in HTML.
+
+```html
+<div>
+    <blur-hash
+        time="0.6s"
+        alt="cool cat"
+        placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
+        src="..."
+        width=100
+        height=100
+    >
+    </blur-hash>
+</div>
+```
+
+## use
+Call the static method `.define` in JS, then use the tag in HTML.
+
+```js
+import { BlurHash } from '@substrate-system/blur-hash'
+
+BlurHash.define()
+```
+
+```html
+<blur-hash
+  alt="cool cat"
+  placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
+  width=100
+  height=100
+  src="..."
+></blur-hash>
 ```
 
 ## API
@@ -160,51 +213,7 @@ __CSS variables__
 * `--blur-hash-opactiy` -- the opacity to use for the placeholder image,
   default is `0.2`
 
-## use
-
-You will need to call the static method `.define` in JS to use the element.
-
-### Bundler
-
-#### JS
-```js
-import { BlurHash } from '@substrate-system/blur-hash'
-
-BlurHash.define()
-```
-
-#### HTML
-
-Use the tag in HTML.
-
-```html
-<div>
-    <blur-hash
-        time="0.6s"
-        placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
-        src="..."
-        width=100
-        height=100
-    >
-    </blur-hash>
-</div>
-```
-
-### pre-built JS
-This package exposes minified JS files too. Copy them to a location that is
-accessible to your web server, then link to them in HTML.
-
-#### copy
-```sh
-cp ./node_modules/@substrate-system/blur-hash/dist/index.min.js ./public/blur-hash.min.js
-```
-
-#### HTML
-```html
-<script type="module" src="./blur-hash.min.js"></script>
-```
-
-## Create the string
+## Create the blur-hash string
 
 Use Node to create the `placeholder` attribute, the string consumed
 by blur-hash.
