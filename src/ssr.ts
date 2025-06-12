@@ -1,3 +1,4 @@
+import { attributes } from '@substrate-system/util'
 import type { ImgAttrs } from './index.js'
 
 export function html (attrs:ImgAttrs & { classes?:string }) {
@@ -17,6 +18,9 @@ export function html (attrs:ImgAttrs & { classes?:string }) {
     if (!placeholder) throw new Error('not placeholder')
 
     const htmlString = `<canvas
+        alt="${alt}"
+        width=${width}
+        height=${height}
         class="blurry"
         width=${width}
         height=${height}
@@ -32,13 +36,11 @@ export function html (attrs:ImgAttrs & { classes?:string }) {
         src="${src}"
     />`
 
+    const attributeString = attributes(attrs)
+
     // running in node?
     return typeof window === 'undefined' ?
-        `<blur-hash
-            ${attrs.classes ? `class="${attrs.classes}"` : ''}
-            alt="${alt}"
-            placeholder="${placeholder}"
-        >
+        `<blur-hash ${attributeString}>
             ${htmlString}
         </blur-hash>` :
         htmlString

@@ -11,7 +11,13 @@ test('server-side render', t => {
         src: 'abc.jpg'
     })
 
-    console.log('****', htmlString)
+    const blurHashEl = htmlString.substring(
+        htmlString.indexOf('<'),
+        htmlString.indexOf('>') + 1
+    )
+
+    t.ok(blurHashEl.includes('alt="hello" width="30" classes="ok" height="30" ' +
+        'placeholder="UHGIM_X900xC~XWFE0xt00o3%1oz-;t7i|IV" src="abc.jpg"'))
 
     t.ok(htmlString.includes('<blur-hash'), 'should include the custom element')
     t.ok(htmlString.includes('<canvas'), 'should include a canvas element')

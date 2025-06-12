@@ -56,6 +56,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@substrate-system/util": "^0.1.31",
     "@substrate-system/web-component": "^0.0.22",
     "blurhash": "^2.0.5",
     "image-size": "^2.0.2",
