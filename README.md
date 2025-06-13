@@ -228,7 +228,7 @@ __CSS variables__
 * `--blur-hash-time` -- the transition time for animating blurry -> sharp,
   default is `0.8s`
 * `--blur-hash-opactiy` -- the opacity to use for the placeholder image,
-  default is `0.2`
+  default is `0.4`
 
 ## Create the blur-hash string
 
