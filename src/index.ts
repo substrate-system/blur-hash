@@ -87,9 +87,9 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         const width = parseInt(this.getAttribute('width') ?? '')
         const height = parseInt(this.getAttribute('height') ?? '')
         const placeholder = this.getAttribute('placeholder')
-        if (!placeholder || !width || !height) {
-            throw new Error('Missing attributes')
-        }
+        if (!placeholder) throw new Error('Missing placeholder')
+        if (!width) throw new Error('Missing width')
+        if (!height) throw new Error('Missing height')
 
         // don't render again if we dont have to
         if (!this.innerHTML) {
