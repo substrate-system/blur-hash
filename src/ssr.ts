@@ -32,7 +32,7 @@ export function html (attrs:ImgAttrs & { classes?:string }) {
         decoding="${decoding || 'async'}"
         loading="${loading || 'lazy'}"
         ${srcset ? `srcset="${srcset}"` : ''}
-        ${sizes ? `sizes=${sizes}` : ''}
+        ${sizes ? `sizes="${sizes}"` : ''}
         src="${src}"
     />`
 
