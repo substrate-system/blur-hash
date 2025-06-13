@@ -10,7 +10,7 @@ blur-hash {
     }
 
     & img {
-        transition: opacity 0.6s;
+        transition: opacity var(--blur-hash-time, 0.8s);
         object-fit: cover;
 
         &.blurry {
