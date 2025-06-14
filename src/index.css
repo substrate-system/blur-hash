@@ -14,7 +14,7 @@ blur-hash {
         object-fit: cover;
 
         &.blurry {
-            opacity: 0;
+            opacity: var(--blur-hash-opacity, 0.4);
             filter: blur(30px);
         }
 
