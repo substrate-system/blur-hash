@@ -76,19 +76,20 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         if (attrs.srcset) img.setAttribute('srcset', attrs.srcset)
         if (attrs.sizes) img.setAttribute('sizes', attrs.sizes)
 
-        if (img.complete && img.naturalWidth > 0) {
-            this.sharpen()
-        } else {
-            img.addEventListener('load', () => {
-                this.sharpen()
-            })
-        }
+        this.sharpen()
     }
 
     sharpen () {
         const img = this.qs('img')!
-        img.classList.remove('blurry')
-        img.classList.add('sharp')
+        if (img.complete && img.naturalWidth > 0) {
+            img.classList.remove('blurry')
+            img.classList.add('sharp')
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.remove('blurry')
+                img.classList.add('sharp')
+            })
+        }
     }
 
     connectedCallback () {
@@ -111,12 +112,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         imageData.data.set(pixels)
         ctx.putImageData(imageData, 0, 0)
 
-        const img = this.querySelector('img')!
-        img.addEventListener('load', () => {
-            // canvas.style.display = 'none'
-            img.classList.remove('blurry')
-            img.classList.add('sharp')
-        })
+        this.sharpen()
     }
 
     static html (attrs:ImgAttrs & { classes?:string }) {
