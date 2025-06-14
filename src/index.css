@@ -10,6 +10,8 @@ blur-hash {
     }
 
     & img {
+        position: relative;
+        top: -100%;
         transition: opacity var(--blur-hash-time, 0.8s);
         object-fit: cover;
 

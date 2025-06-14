@@ -77,7 +77,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
         if (attrs.sizes) img.setAttribute('sizes', attrs.sizes)
 
         img.addEventListener('load', () => {
-            canvas.style.display = 'none'
+            // canvas.style.display = 'none'
             img.classList.remove('blurry')
             img.classList.add('sharp')
         })
@@ -105,7 +105,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
 
         const img = this.querySelector('img')!
         img.addEventListener('load', () => {
-            canvas.style.display = 'none'
+            // canvas.style.display = 'none'
             img.classList.remove('blurry')
             img.classList.add('sharp')
         })
