@@ -64,7 +64,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@substrate-system/debug": "^0.7.2",
+    "@substrate-system/debug": "^0.9.2",
     "@substrate-system/dom": "^0.1.0",
     "@substrate-system/tapzero": "^0.10.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
