@@ -1,7 +1,9 @@
 import { attributes } from '@substrate-system/util'
 import type { ImgAttrs } from './index.js'
 
-export function html (attrs:ImgAttrs & { classes?:string }) {
+type SSRAttrs = ImgAttrs & { classes?:string }
+
+export function html (attrs:SSRAttrs) {
     const {
         width,
         height,
@@ -44,4 +46,8 @@ export function html (attrs:ImgAttrs & { classes?:string }) {
             ${htmlString}
         </blur-hash>` :
         htmlString
+}
+
+export const outerHTML = (attrs:SSRAttrs) => {
+    return `<blur-hash>${html(attrs)}</blur-hash>`
 }
