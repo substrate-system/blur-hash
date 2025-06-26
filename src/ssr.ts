@@ -1,7 +1,7 @@
 import { attributes } from '@substrate-system/util'
 import type { ImgAttrs } from './index.js'
 
-type SSRAttrs = ImgAttrs & { classes?:string }
+export type SSRAttrs = ImgAttrs & { classes?:string }
 
 export function html (attrs:SSRAttrs) {
     const {
