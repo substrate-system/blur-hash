@@ -1,6 +1,6 @@
 import { WebComponent } from '@substrate-system/web-component'
 import { decode } from 'blurhash'
-import { html } from './ssr.js'
+import { render } from './html.js'
 
 // for docuement.querySelector
 declare global {
@@ -116,7 +116,7 @@ export class BlurHash extends WebComponent.create('blur-hash') {
     }
 
     static html (attrs:ImgAttrs & { classes?:string }) {
-        return html(attrs)
+        return render(attrs)
     }
 
     /**

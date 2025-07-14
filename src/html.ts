@@ -3,7 +3,7 @@ import type { ImgAttrs } from './index.js'
 
 export type SSRAttrs = ImgAttrs & { classes?:string }
 
-export function html (attrs:SSRAttrs) {
+export function render (attrs:SSRAttrs) {
     const {
         width,
         height,
@@ -49,5 +49,5 @@ export function html (attrs:SSRAttrs) {
 }
 
 export const outerHTML = (attrs:SSRAttrs) => {
-    return `<blur-hash>${html(attrs)}</blur-hash>`
+    return `<blur-hash>${render(attrs)}</blur-hash>`
 }

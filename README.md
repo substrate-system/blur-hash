@@ -10,7 +10,8 @@
 
 
 This is the ["blur-up" image loading technique](https://css-tricks.com/the-blur-up-technique-for-loading-background-images/),
-with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components).
+with the [blur-hash algorithm](https://blurha.sh/),
+as a [web component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components).
 
 [See a live demonstration](https://substrate-system.github.io/blur-hash/)
 
@@ -52,7 +53,8 @@ npm i -S @substrate-system/blur-hash
 
 ## Modules
 
-This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports).
+This exposes ESM and common JS via
+[package.json `exports` field](https://nodejs.org/api/packages.html#exports).
 
 ### ESM
 ```js
@@ -90,9 +92,9 @@ Use the tag in HTML.
         time="0.6s"
         alt="cool cat"
         placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
-        src="..."
-        width=100
-        height=100
+        src="/example/cat.png"
+        width="100"
+        height="100"
     >
     </blur-hash>
 </div>
@@ -113,18 +115,18 @@ BlurHash.define()
   placeholder="LEHV6nWB2yk8pyo0adR*.7kCMdnj"
   width=100
   height=100
-  src="..."
+  src="/example/cat.png"
 ></blur-hash>
 ```
 
 ### Server-side rendering
-Following convention, this module exposes an `html` function at `/ssr`. It
+Following convention, this module exposes `render` function at `/html`. It
 returns a plain string of appropriate markup in Node.
 
 ```js
-import { html } from '@substrate-system/blur-hash/ssr'
+import { render } from '@substrate-system/blur-hash/html'
 
-const htmlString = html({
+const htmlString = render({
     alt: 'hello',
     width: 30,
     height: 30,
