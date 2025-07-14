@@ -5,7 +5,7 @@
 [![Common Changelog](https://nichoth.github.io/badge/common-changelog.svg)](https://common-changelog.org)
 [![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
 [![install size](https://flat.badgen.net/packagephobia/install/@substrate-system/blur-hash?cache-control=no-cache)](https://packagephobia.com/result?p=@substrate-system/blur-hash)
-[![GZip size](https://flat.badgen.net/bundlephobia/minzip/@substrate-system/blur-hash?color=green)](https://bundlephobia.com/package/@substrate-system/blur-hash)
+[![GZip size](https://flat.badgen.net/bundlephobia/minzip/@substrate-system/blur-hash)](https://bundlephobia.com/package/@substrate-system/blur-hash)
 [![license](https://img.shields.io/badge/license-Big_Time-blue?style=flat-square)](LICENSE)
 
 
