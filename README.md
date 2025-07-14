@@ -17,6 +17,8 @@ with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https:/
 > [!TIP]
 > Throttle the internet speed with the dev tools.
 
+<details><summary><h2>Contents</h2></summary>
+
 <!-- toc -->
 
 - [Install](#install)
@@ -38,6 +40,9 @@ with the [blur-hash algorithm](https://blurha.sh/), as a [web component](https:/
   * [CLI](#cli)
 
 <!-- tocstop -->
+
+</details>
+
 
 ## Install
 
