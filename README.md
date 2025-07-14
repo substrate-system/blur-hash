@@ -121,7 +121,7 @@ BlurHash.define()
 
 ### Server-side rendering
 Following convention, this module exposes `render` function at `/html`. It
-returns a plain string of appropriate markup in Node.
+returns a plain string of markup.
 
 ```js
 import { render } from '@substrate-system/blur-hash/html'

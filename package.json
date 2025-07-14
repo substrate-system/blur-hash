@@ -15,9 +15,9 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./ssr": {
-      "import": "./dist/ssr.js",
-      "require": "./dist/ssr.cjs"
+    "./html": {
+      "import": "./dist/render.js",
+      "require": "./dist/render.cjs"
     },
     "./hash": "./dist/bin/index.js",
     "./*": {
