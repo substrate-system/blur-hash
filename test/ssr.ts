@@ -1,8 +1,8 @@
 import { test } from '@substrate-system/tapzero'
-import { html } from '../src/ssr.js'
+import { render } from '../src/html.js'
 
 test('server-side render', t => {
-    const htmlString = html({
+    const htmlString = render({
         alt: 'hello',
         width: 30,
         classes: 'ok',
