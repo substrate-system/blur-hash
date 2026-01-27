@@ -56,7 +56,6 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@substrate-system/util": "^0.1.31",
     "@substrate-system/web-component": "^0.0.40",
     "blurhash": "^2.0.5",
     "image-size": "^2.0.2",
@@ -64,14 +63,13 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@substrate-system/debug": "^0.9.2",
-    "@substrate-system/dom": "^0.1.0",
-    "@substrate-system/tapzero": "^0.10.0",
+    "@substrate-system/dom": "^0.1.13",
+    "@substrate-system/tapzero": "^0.10.16",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "auto-changelog": "^2.4.0",
     "cssnano": "^7.0.3",
-    "esbuild": "^0.27.0",
+    "esbuild": "^0.27.2",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "markdown-toc": "^1.2.0",
@@ -81,7 +79,7 @@
     "tap-spec": "^5.0.0",
     "tape-run": "^11.0.0",
     "typedoc": "^0.28.1",
-    "typescript": "^5.4.5",
+    "typescript": "^5.9.3",
     "vite": "^7.0.2"
   },
   "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",

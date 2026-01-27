@@ -1,4 +1,4 @@
-import { attributes } from '@substrate-system/util'
+import { toAttributes } from '@substrate-system/web-component/attributes'
 import type { ImgAttrs } from './index.js'
 
 export type SSRAttrs = ImgAttrs & { classes?:string }
@@ -38,7 +38,7 @@ export function render (attrs:SSRAttrs) {
         src="${src}"
     />`
 
-    const attributeString = attributes(attrs)
+    const attributeString = toAttributes(attrs)
 
     // running in node?
     return typeof window === 'undefined' ?
